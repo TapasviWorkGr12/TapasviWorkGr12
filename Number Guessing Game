@@ -1,0 +1,50 @@
+
+/*
+This is my first project, its a console based random number between 1 to 100 guessing game.
+It will tell you whether your guess was too high or too low, and once you get the correct guess, 
+it will tell you, your total guesses. 
+*/
+import java.util.Scanner;
+import java.util.Random;
+public class Main{
+public static void main(String[]args){
+    
+ Random guess = new Random();
+ Scanner scanner = new Scanner(System.in);
+ 
+int randomGuess = guess.nextInt(100)+1;
+int count = 0;
+ 
+ System.out.println("Enter your guess between 1 to 100");
+ int theirGuess = scanner.nextInt();
+ count++;
+
+if(theirGuess == randomGuess){
+    System.out.println("Congrats, you got it right!");
+    System.out.println("it took you " + count+ " tries!");
+}
+else{
+    while(theirGuess !=randomGuess){
+ 
+ if(theirGuess>randomGuess){
+     System.out.println("Your guess is too high!");
+ } 
+ else{
+     System.out.println("Your guess is too low!");
+ }
+ System.out.println("Enter your guess between 1 to 100");
+ theirGuess = scanner.nextInt(); 
+ count++;
+    }
+   System.out.println("Congrats, you got it right!");
+   System.out.println("it took you " + count + " tries!");
+}
+
+scanner.close();
+}}
+    
+
+    
+
+  
+    
