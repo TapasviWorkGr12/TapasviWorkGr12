@@ -1,0 +1,73 @@
+/*
+
+1. Stores student names and grades in arrays.
+
+2. Lets you print all students and grades.
+
+3. Calculates average grade, highest grade, and lowest grade.
+
+4. Lets you search for a student by name and get their grade.
+
+*/
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter number of students: ");
+        int numOfStudents = scanner.nextInt();
+        scanner.nextLine();
+
+        String[] namesList = new String[numOfStudents];
+        int[] grades = new int[numOfStudents];
+
+        for (int i = 0; i < numOfStudents; i++) {
+            System.out.print("Enter the name of student " + (i + 1) + ": ");
+            namesList[i] = scanner.nextLine();
+
+            System.out.print("Enter grade of student " + (i + 1) + ": ");
+            grades[i] = scanner.nextInt();
+            scanner.nextLine();
+        }
+
+        System.out.println("\n--- Student Grades ---");
+        for (int i = 0; i < numOfStudents; i++) {
+            System.out.println(namesList[i] + ": " + grades[i]);
+        }
+
+        double sum = 0;
+        int max = grades[0];
+        int min = grades[0];
+
+        for (int grade : grades) {
+            sum += grade;
+            if (grade > max) max = grade;
+            if (grade < min) min = grade;
+        }
+
+        double average = sum / numOfStudents;
+        System.out.println("\nAverage grade: " + average);
+        System.out.println("Highest grade: " + max);
+        System.out.println("Lowest grade: " + min);
+
+        System.out.print("\nEnter student name to search: ");
+        String searchName = scanner.nextLine();
+        boolean found = false;
+
+        for (int i = 0; i < numOfStudents; i++) {
+            if (namesList[i].equalsIgnoreCase(searchName)) {
+                System.out.println(namesList[i] + "'s grade: " + grades[i]);
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Student not found.");
+        }
+
+        scanner.close();
+    }
+}
